@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "login-app": {
+    "flanders-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/login-app",
+            "outputPath": "dist/flanders-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -21,7 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "login-app:build:production"
+              "buildTarget": "flanders-app:build:production"
             },
             "development": {
-              "buildTarget": "login-app:build:development"
+              "buildTarget": "flanders-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "login-app:build"
+            "buildTarget": "flanders-app:build"
           }
         },
         "test": {
@@ -80,7 +80,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
@@ -101,11 +101,11 @@
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "login-app:serve"
+            "devServerTarget": "flanders-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "login-app:serve:production"
+              "devServerTarget": "flanders-app:serve:production"
             }
           }
         },
@@ -119,27 +119,27 @@
         "ct": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "login-app:serve",
+            "devServerTarget": "flanders-app:serve",
             "watch": true,
             "headless": false,
             "testingType": "component"
           },
           "configurations": {
             "development": {
-              "devServerTarget": "login-app:serve:development"
+              "devServerTarget": "flanders-app:serve:development"
             }
           }
         },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "login-app:serve",
+            "devServerTarget": "flanders-app:serve",
             "watch": true,
             "headless": false
           },
           "configurations": {
             "production": {
-              "devServerTarget": "login-app:serve:production"
+              "devServerTarget": "flanders-app:serve:production"
             }
           }
         }
