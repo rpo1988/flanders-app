@@ -14,7 +14,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HomeComponent implements OnDestroy {
   @HostBinding('class')
-  hostClasses: string = 'flex flex-col w-full h-full p-5 gap-5 items-center justify-center text-gray-900';
+  hostClasses: string =
+    'mx-auto max-w-xl flex flex-col w-full h-full p-5 gap-5 items-center justify-center text-gray-900';
 
   isLoading: boolean = false;
 

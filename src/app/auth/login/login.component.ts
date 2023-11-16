@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -21,7 +21,7 @@ type Form = FormGroup<{
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputComponent, RouterModule, ErrorMsgComponent],
+  imports: [CommonModule, ReactiveFormsModule, InputComponent, RouterModule, ErrorMsgComponent, NgOptimizedImage],
   templateUrl: './login.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -32,7 +32,7 @@ export class LoginComponent implements OnDestroy {
   showError: boolean = false;
 
   @HostBinding('class')
-  hostClasses: string = 'flex flex-col w-full h-full p-5 items-center justify-center text-gray-900';
+  hostClasses: string = 'flex flex-col w-full h-full items-center justify-center text-gray-900 lg:flex-row';
 
   private _hostDestroyed$: Subject<void> = new Subject();
 
