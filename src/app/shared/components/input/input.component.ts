@@ -31,6 +31,9 @@ export class InputComponent implements ControlValueAccessor {
   @Input()
   disabled: boolean = false;
 
+  @Input()
+  qaTag?: string;
+
   @HostBinding('class')
   hostClasses: string = 'flex flex-col justify-start gap-1  items-start';
 
@@ -48,6 +51,19 @@ export class InputComponent implements ControlValueAccessor {
     if (this.control) {
       this.control.valueAccessor = this;
     }
+  }
+
+  get qaTagLabel(): string {
+    return this.qaTag ? `${this.qaTag}-label` : 'label';
+  }
+
+  get qaTagInput(): string {
+    return this.qaTag ? `${this.qaTag}-value` : 'value';
+  }
+
+  get qaTagError(): string {
+    const errorType = Object.keys(this.control?.errors || {})[0];
+    return this.qaTag ? `${this.qaTag}${errorType ? '-' + errorType : ''}-error` : 'error';
   }
 
   get isInvalid(): boolean {

@@ -1,6 +1,7 @@
-<label *ngIf="label" class="text-sm" [for]="id">{{ label }}</label>
+<label *ngIf="label" class="text-sm" [for]="id" [attr.data-qa-tag]="qaTagLabel">{{ label }}</label>
 <input
   [id]="id"
+  [attr.data-qa-tag]="qaTagInput"
   class="inline-flex h-9 w-full rounded-lg border border-solid px-3 py-1.5 text-sm text-gray-900 placeholder-gray-500 outline-none"
   [class]="[
     disabled
@@ -26,4 +27,4 @@
   (mouseenter)="onControlHover(true)"
   (mouseleave)="onControlHover(false)"
   (ngModelChange)="onControlChange($event)" />
-<app-error-msg class="mt-0.5" *ngIf="isInvalid && isTouched">{{ errorMsg }}</app-error-msg>
+<app-error-msg *ngIf="isInvalid && isTouched" class="mt-0.5" [qaTag]="qaTagError">{{ errorMsg }}</app-error-msg>

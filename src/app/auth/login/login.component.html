@@ -9,24 +9,33 @@
 
 <div class="flex w-full flex-grow items-center justify-center p-5 lg:w-[50vw]">
   <div class="flex w-full max-w-xs flex-col items-center justify-center">
-    <h1 class="mb-8 text-center text-3xl font-bold">Log in to your account</h1>
+    <h1 [attr.data-qa-tag]="'title'" class="mb-8 text-center text-3xl font-bold">Log in to your account</h1>
 
     <form class="flex w-full flex-col gap-5" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <app-input label="Username" type="text" [id]="controlName.USERNAME" [formControlName]="controlName.USERNAME" />
+      <app-input
+        label="Username"
+        type="text"
+        [id]="controlName.USERNAME"
+        [qaTag]="controlName.USERNAME"
+        [formControlName]="controlName.USERNAME" />
       <app-input
         label="Password"
         type="password"
         [id]="controlName.PASSWORD"
+        [qaTag]="controlName.PASSWORD"
         [formControlName]="controlName.PASSWORD" />
 
       <button
         type="submit"
         class="bg-primary-700 hover:bg-primary-600 disabled:bg-primary-500 mt-3 inline-flex h-9 items-center justify-center rounded-lg px-4 text-white outline-none focus:shadow-[0_0_0_4px_rgba(170,201,231,0.5)]"
+        [attr.data-qa-tag]="'login'"
         [disabled]="loading || form.invalid">
         {{ loading ? "Logging in..." : "Log in" }}
       </button>
     </form>
 
-    <app-error-msg class="mt-4" *ngIf="!loading && showError">Invalid username or password</app-error-msg>
+    <app-error-msg *ngIf="!loading && showError" class="mt-4" [qaTag]="'username-or-password-error'">
+      Invalid username or password
+    </app-error-msg>
   </div>
 </div>
