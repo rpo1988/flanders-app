@@ -1,1 +1,12 @@
-<p>home works!</p>
+<h1 class="text-center text-3xl font-bold">Welcome back!</h1>
+<p class="text-center">
+  I acknowledge that the current design is undeniably unattractive. However, by welcoming me into your company, we have
+  the potential to collaboratively create far more impressive and aesthetically pleasing outcomes.
+</p>
+<button
+  type="button"
+  class="font-semibold text-blue-600 hover:text-blue-500 disabled:text-blue-400"
+  [disabled]="isLoading"
+  (click)="onClicked()">
+  {{ isLoading ? "Logging out..." : "Please log me out immediately!" }}
+</button>

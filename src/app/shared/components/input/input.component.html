@@ -1,0 +1,29 @@
+<label *ngIf="label" class="text-sm" [for]="id">{{ label }}</label>
+<input
+  [id]="id"
+  class="inline-flex h-9 w-full rounded-lg border border-solid px-3 py-1.5 text-sm text-gray-900 placeholder-gray-500 outline-none"
+  [class]="[
+    disabled
+      ? 'border-gray-100'
+      : isInvalid && isTouched
+        ? 'border-red-500'
+        : isHover || isFocus
+          ? 'border-primary-700'
+          : 'border-gray-300',
+    disabled
+      ? ''
+      : isInvalid && isTouched
+        ? 'shadow-[0_0_0_4px_rgba(239,68,68,0.3)]'
+        : isFocus
+          ? 'shadow-[0_0_0_4px_rgba(170,201,231,0.5)]'
+          : ''
+  ]"
+  [type]="type"
+  [disabled]="disabled"
+  [ngModel]="value"
+  (focus)="onControlFocus()"
+  (blur)="onControlBlur()"
+  (mouseenter)="onControlHover(true)"
+  (mouseleave)="onControlHover(false)"
+  (ngModelChange)="onControlChange($event)" />
+<app-error-msg class="mt-0.5" *ngIf="isInvalid && isTouched">{{ errorMsg }}</app-error-msg>

@@ -11,12 +11,12 @@ export interface LoginRequest {
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly SESSION_LOCAL_STORAGE_KEY = 'session';
-  private readonly SESSION_DURATION = 300000; // 5 mins
+  private readonly _SESSION_LOCAL_STORAGE_KEY = 'session';
+  private readonly _SESSION_DURATION = 300000; // 5 mins
 
   isAuthenticated(): boolean {
     try {
-      const session = localStorage.getItem(this.SESSION_LOCAL_STORAGE_KEY);
+      const session = localStorage.getItem(this._SESSION_LOCAL_STORAGE_KEY);
       return !!session && new Date(+session).getTime() > Date.now();
     } catch (error) {
       return false;
@@ -27,9 +27,9 @@ export class AuthService {
     return new Observable((subscriber) => {
       debounceInterval(
         () => {
-          const isValid = this.validateLogin(body.username, body.password);
+          const isValid = this._validateLogin(body.username, body.password);
           if (isValid) {
-            localStorage.setItem(this.SESSION_LOCAL_STORAGE_KEY, `${Date.now() + this.SESSION_DURATION}`);
+            localStorage.setItem(this._SESSION_LOCAL_STORAGE_KEY, `${Date.now() + this._SESSION_DURATION}`);
           }
           subscriber.next(isValid);
           subscriber.complete();
@@ -44,7 +44,7 @@ export class AuthService {
     return new Observable((subscriber) => {
       debounceInterval(
         () => {
-          localStorage.removeItem(this.SESSION_LOCAL_STORAGE_KEY);
+          localStorage.removeItem(this._SESSION_LOCAL_STORAGE_KEY);
           subscriber.next();
           subscriber.complete();
         },
@@ -54,7 +54,7 @@ export class AuthService {
     });
   }
 
-  private validateLogin(username: string, password: string): boolean {
+  private _validateLogin(username: string, password: string): boolean {
     const USERNAME = 'MAINT';
     const PASSWORD = 'safetyiskey';
     return username === USERNAME && password === PASSWORD;
