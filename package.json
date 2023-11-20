@@ -1,6 +1,6 @@
 {
   "name": "flanders-app",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,8 @@
     "pretty": "prettier --write 'src/**/*.{ts,js,json,html,css}'",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "deploy": "npx angular-cli-ghpages --dir=dist/flanders-app/browser"
   },
   "private": true,
   "dependencies": {
@@ -40,7 +41,9 @@
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "6.10.0",
     "@typescript-eslint/parser": "6.10.0",
+    "angular-cli-ghpages": "^1.0.7",
     "autoprefixer": "^10.4.16",
+    "cypress": "latest",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -54,7 +57,6 @@
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
-    "typescript": "~5.2.2",
-    "cypress": "latest"
+    "typescript": "~5.2.2"
   }
 }
